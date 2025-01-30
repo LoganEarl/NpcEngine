@@ -1,8 +1,8 @@
-package state.effect
+package net.thetower.state.effect
 
 import com.sun.org.slf4j.internal.Logger
 import com.sun.org.slf4j.internal.LoggerFactory
-import state.intent.Intent
+import net.thetower.state.intent.Intent
 
 class DebugEffect(
     private val debugText: String,

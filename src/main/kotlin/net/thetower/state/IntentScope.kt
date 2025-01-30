@@ -1,4 +1,4 @@
-package state
+package net.thetower.state
 
 enum class IntentScope {
     //Only the person initiating the action

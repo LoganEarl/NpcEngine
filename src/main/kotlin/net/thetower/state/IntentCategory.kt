@@ -1,4 +1,4 @@
-package state
+package net.thetower.state
 
 /*
 Actions can be sorted into various categories. Think of them like search tags.

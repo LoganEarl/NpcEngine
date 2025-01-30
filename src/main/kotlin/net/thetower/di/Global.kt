@@ -1,8 +1,8 @@
-package di
+package net.thetower.di
 
 import org.kodein.di.DI
 import org.kodein.di.bindSingleton
-import state.GameEngine
+import net.thetower.state.GameEngine
 
 class Global {
     companion object {

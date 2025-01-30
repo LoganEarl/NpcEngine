@@ -1,4 +1,4 @@
-package entity
+package net.thetower.entity
 
 class Entity(
         controller: EntityController,

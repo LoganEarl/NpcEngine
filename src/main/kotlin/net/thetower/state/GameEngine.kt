@@ -1,7 +1,7 @@
-package state
+package net.thetower.state
 
-import state.effect.Effect
-import state.intent.Intent
+import net.thetower.state.effect.Effect
+import net.thetower.state.intent.Intent
 
 /**
  * This class is responsible for receiving

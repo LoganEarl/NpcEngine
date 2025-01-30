@@ -1,11 +1,11 @@
-package state.intent
+package net.thetower.state.intent
 
-import entity.Entity
+import net.thetower.entity.Entity
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import state.IntentCategory
-import state.IntentScope
-import state.effect.Effect
+import net.thetower.state.IntentCategory
+import net.thetower.state.IntentScope
+import net.thetower.state.effect.Effect
 
 class DebugIntent(
     private val debugMessage: String,

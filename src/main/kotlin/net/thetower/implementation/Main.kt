@@ -29,6 +29,8 @@ fun main() {
     val intentProcessor: IntentProcessor = di.instance()
     intentProcessor.enqueueIntent(InsultIntent(npc2, listOf(npc1), di))
     intentProcessor.tick()
+    intentProcessor.tick()
+    intentProcessor.tick()
 
 }
 

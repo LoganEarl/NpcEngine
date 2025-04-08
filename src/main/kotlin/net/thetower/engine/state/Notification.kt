@@ -18,8 +18,7 @@ class Notification(
     interface Listener {
         val id: Uuid
         fun notify(notification: Notification)
+        fun notifyOfTickEnd(tickNumber: Int)
     }
-
-
 }
 

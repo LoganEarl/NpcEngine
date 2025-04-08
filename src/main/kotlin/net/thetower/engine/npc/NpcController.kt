@@ -29,11 +29,15 @@ class NpcController(
                 InsultIntent(
                     this.entity,
                     listOf(notification.intent.sourceEntity),
-                    di.instance()
+                    di
                 )
             )
         }
 
+    }
+
+    override fun notifyOfTickEnd(tickNumber: Int) {
+        //No-op for now. We will need this for the player controller mostly
     }
 }
 

@@ -27,6 +27,12 @@ class NpcEntity(
 
    override fun notify(notification: Notification) {
       processSocialImplications(notification)
+
+      subscribers.values.forEach { it.notify(notification) }
+   }
+
+   override fun notifyOfTickEnd(tickNumber: Int) {
+      subscribers.values.forEach { it.notifyOfTickEnd(tickNumber) }
    }
 
    fun processSocialImplications(notification: Notification) {
@@ -95,6 +101,6 @@ class NpcEntity(
 
       }
 
-      log.info("Just process social effect type $effect on target: $id")
+      log.info("Just processed social effect type $effect on target: $id")
    }
 }

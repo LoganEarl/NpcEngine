@@ -30,9 +30,9 @@ class InsultIntent(
 
         val score = random.nextInt(10)
 
-        if (score > 1) {
+        return if (score > 1) {
             log.info("Entity ${sourceEntity.id} gives insult to targets: ${targets.map { it.id }} with score: $score")
-            return targets.map { effectTarget ->
+            targets.map { effectTarget ->
                 SocialEffect(
                     mapOf(
                         Pair(OpinionComponent.DISGUST_TRUST, -.1)
@@ -40,12 +40,12 @@ class InsultIntent(
                         Pair(MoodComponent.ANGRY_CALM, -0.5)
                     ),
                     this, effectTarget
-                );
+                )
             }
         } else {
             log.info{"Entity ${sourceEntity.id} fails to give insult to targets: ${targets.map { it.id }} with score: $score"}
             //TODO figure out what should happen if someone fucks up when giving an insult
-            return emptyList()
+            emptyList()
         }
     }
 }

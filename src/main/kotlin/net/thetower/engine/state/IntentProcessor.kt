@@ -3,16 +3,19 @@ package net.thetower.engine.state
 import mu.KotlinLogging
 import net.thetower.engine.entity.Entity
 import net.thetower.engine.locale.LocaleModel
+import kotlin.uuid.Uuid
 
 /**
  * This class is responsible for receiving
  */
 class IntentProcessor(
-    val localeModel: LocaleModel
-) {
+    val localeModel: LocaleModel,
+) : Notification.Producer {
     companion object {
         val log = KotlinLogging.logger { }
     }
+
+    override val subscribers: MutableMap<Uuid, Notification.Listener> = mutableMapOf()
 
     private var nextIntents: MutableList<Intent> = mutableListOf()
     private var tickNumber: Int = 0
@@ -31,7 +34,7 @@ class IntentProcessor(
         val notifications: MutableList<Notification> = mutableListOf()
         for (intent in intents) {
             val results = intent.execute()
-            val notification = Notification(intent, effects)
+            val notification = Notification(intent, results, tickNumber)
             notifications.add(notification)
             effects.addAll(results)
         }
@@ -54,8 +57,11 @@ class IntentProcessor(
             if (scope.visibleToTargetLocale) entitiesToNotify.addAll(notification.effects.map { it.target }
                 .flatMap { e -> localeModel.getEntitiesNearby(e) })
             entitiesToNotify.forEach { entity -> entity.notify(notification) }
+            //Our direct subscribers get all the notifications
+            subscribers.values.forEach { it.notify(notification) }
         }
 
         localeModel.getAllActiveEntities().forEach { it.notifyOfTickEnd(tickNumber) }
+        subscribers.values.forEach { it.notifyOfTickEnd(tickNumber) }
     }
 }

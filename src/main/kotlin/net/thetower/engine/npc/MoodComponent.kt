@@ -1,6 +1,8 @@
 package net.thetower.engine.npc
 
 enum class MoodComponent {
-    ANGRY_CALM
+//    FEAR_COURAGE,
+//    GRIEF_JOY,
+    ANGER_CALMNESS
 }
 

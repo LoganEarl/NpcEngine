@@ -21,6 +21,16 @@ The implementation will determine all the specifics.
 However, things like items, player controllers, attacks, stats, etc will all be part of the implementation. this is an
 NPC engine, not a full game engine.
 
+### NPC Response Tree
+
+Each social exchange can be modeled by a couple of attributes. 
+1) Social Category: What role does what they said play in the conversation? 
+2) Sentiment: What feelings are they trying to instill in others?
+
+Responses are determined (at least for now) at random from the list of contextually relevant responses. 
+
+Sentiment is selected based off which matches their mental state + some random fuzzing factor
+
 ### Dependency Injection
 
 Anything in the `engine` package should NOT include stuff for DI. I want that package to eventually be something I can

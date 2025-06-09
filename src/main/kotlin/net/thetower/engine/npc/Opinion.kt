@@ -1,5 +1,7 @@
 package net.thetower.engine.npc
 
+import net.thetower.engine.util.toStringByReflection
+
 class Opinion(
     private val opinionComponents: MutableMap<OpinionComponent, Double> =
         OpinionComponent.entries.associateWith { 0.0 }.toMutableMap()
@@ -9,7 +11,11 @@ class Opinion(
         opinionComponents[component] = value
     }
 
-    val byComponent: Map<OpinionComponent, Double>
+    val components: Map<OpinionComponent, Double>
         get() = this.opinionComponents
+
+    override fun toString(): String {
+        return this.toStringByReflection()
+    }
 }
 

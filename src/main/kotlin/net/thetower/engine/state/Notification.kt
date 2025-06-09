@@ -4,7 +4,8 @@ import kotlin.uuid.Uuid
 
 class Notification(
     val intent: Intent,
-    val effects: List<Effect>
+    val effects: List<Effect>,
+    val tick: Int,
 ) {
     interface Producer {
         val subscribers: MutableMap<Uuid, Listener>
@@ -17,8 +18,8 @@ class Notification(
     }
     interface Listener {
         val id: Uuid
-        fun notify(notification: Notification)
-        fun notifyOfTickEnd(tickNumber: Int)
+        fun notify(notification: Notification) {}
+        fun notifyOfTickEnd(tickNumber: Int) {}
     }
 }
 
